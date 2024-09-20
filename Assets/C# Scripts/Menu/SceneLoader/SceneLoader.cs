@@ -26,12 +26,13 @@ public class SceneLoader : Singleton<SceneLoader>
 
 
     //Function to Start Async Loading Coroutine
-    public void StartLoadScene(string sceneName)
+
+    public void StartLoadScene(int sceneIndex)
     {
-        StartCoroutine(Loadlevel(sceneName)); //Start Coroutine
+        StartCoroutine(LoadScene(sceneIndex)); //Start Coroutine
     }
 
-    IEnumerator Loadlevel(string sceneName)
+    IEnumerator LoadScene(int sceneIndex)
     {
         //Create Empty AsyncOperation
         AsyncOperation loadAsync = null;
@@ -39,7 +40,7 @@ public class SceneLoader : Singleton<SceneLoader>
         //Attempt to create an Async Operation to Load Scene
         try
         {
-            loadAsync = SceneManager.LoadSceneAsync(sceneName);
+            loadAsync = SceneManager.LoadSceneAsync(sceneIndex);
             loadAsync.allowSceneActivation = autoLoadScene;
         }
 
@@ -64,9 +65,6 @@ public class SceneLoader : Singleton<SceneLoader>
         {
             //Update DisplayProgress
             displayProgress = loadAsync.progress;
-
-            //Output Progress in console
-            Debug.Log("Loading Scene: " + sceneName +  " , Progress: " + displayProgress);
 
             //Synchronous processes to run while Actively Loading Scene
             LoadingScene();
