@@ -5,8 +5,13 @@ using UnityEngine;
 public class MenuTransition : MonoBehaviour
 {
     [SerializeField]
-    private Animation transitionAnimation;
+    private Animator transitionAnimation;
 
+    [SerializeField]
+    private float transitionTime = 6f;
+
+    public bool startedTransition = false;
+    public bool loadedTransition = false;
     public bool finishedTransition = false;
     public bool Finished
     {
@@ -19,17 +24,45 @@ public class MenuTransition : MonoBehaviour
     {
         ResetTransition();
         if (transitionAnimation == null) return;
-        transitionAnimation.Play();
+        StartedTransition();
     }
 
     private void ResetTransition()
     {
+        startedTransition = false;
+        loadedTransition = false;
         finishedTransition = false;
     }
 
+    public void StartedTransition()
+    {
+        startedTransition |= true;
+        transitionAnimation.SetBool("Started", true);
+        TimeOutTransition();
+    }
+
+    //Should be called by the entry animation of a transition
+    public void LoadedTransition()
+    {
+        loadedTransition |= true;
+    }
+
+    //Should be called by the exit animation of a transition
     public void FinishedTransition()
     {
         finishedTransition |= true;
+        StopCoroutine(TimeOutTransition());
+        transitionAnimation.SetBool("Finished", true);
     }
 
+
+    private IEnumerator TimeOutTransition()
+    {
+        yield return new WaitForSeconds(transitionTime);
+
+        if(startedTransition && (!loadedTransition || !finishedTransition))
+        {
+            ResetTransition();
+        }
+    }
 }
