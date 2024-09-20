@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : Singleton<MenuManager>
 {
     [SerializeField]
     MenuPage currentPage;
 
     private void Awake()
     {
+        base.Awake();
+
         if (currentPage == null) return;
 
         currentPage.TogglePage(true);
@@ -30,6 +32,5 @@ public class MenuManager : MonoBehaviour
         }
         currentPage = page;
         currentPage.TogglePage(true);
-
     }
 }

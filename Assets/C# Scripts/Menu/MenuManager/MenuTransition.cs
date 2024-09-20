@@ -34,7 +34,7 @@ public class MenuTransition : MonoBehaviour
         finishedTransition = false;
     }
 
-    public void StartedTransition()
+    public virtual void StartedTransition()
     {
         startedTransition |= true;
         transitionAnimation.SetBool("Started", true);
@@ -42,13 +42,13 @@ public class MenuTransition : MonoBehaviour
     }
 
     //Should be called by the entry animation of a transition
-    public void LoadedTransition()
+    public virtual void LoadedTransition()
     {
         loadedTransition |= true;
     }
 
     //Should be called by the exit animation of a transition
-    public void FinishedTransition()
+    public virtual void FinishedTransition()
     {
         finishedTransition |= true;
         StopCoroutine(TimeOutTransition());
