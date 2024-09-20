@@ -7,7 +7,7 @@ public class MenuManager : Singleton<MenuManager>
     [SerializeField]
     MenuPage currentPage;
 
-    private void Awake()
+    new void Awake()
     {
         base.Awake();
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : Singleton<SceneLoader>
 {
     [SerializeField]
     private bool autoLoadScene = false; //Does Scene automatically load when async done
@@ -16,6 +16,12 @@ public class SceneLoader : MonoBehaviour
     {
         get { return displayProgress; }
         private set { displayProgress = value; }
+    }
+
+
+    new void Awake()
+    {
+        base.Awake();
     }
 
 
