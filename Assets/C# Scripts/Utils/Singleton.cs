@@ -16,7 +16,7 @@ public class Singleton<T> : MonoBehaviour where T:Singleton<T>, new()
     }
 
     // Can be used attatched to an object in the scene, aslong as there's only one.
-    private void Awake()
+    protected virtual void Awake()
     {
         if (Instance != null && Instance != this)
         {
