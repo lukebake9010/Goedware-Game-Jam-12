@@ -18,7 +18,7 @@ public class MenuManagerWithTransitions : MenuManager
     private IEnumerator WaitForTransitionThenMove(MenuTransition transition, MenuPage page)
     {
         transition.Transition();
-        while (!transition.Finished)
+        while (!transition.Loaded)
         {
             yield return null;
         }
