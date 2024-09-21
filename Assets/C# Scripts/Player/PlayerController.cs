@@ -25,6 +25,10 @@ public class PlayerController : PlayerInputListener
         rb.velocity = movementDirection * moveSpeed;
     }
 
+    public override void OnAttack(InputAction.CallbackContext context)
+    {
+
+    }
 
     public override void OnPauseMenu(InputAction.CallbackContext context)
     {
@@ -38,7 +42,7 @@ public class PlayerController : PlayerInputListener
 
     public override void OnCycleAbility(InputAction.CallbackContext context)
     {
-        Debug.Log(context.ReadValue<float>().ToString());
+
     }
 
 

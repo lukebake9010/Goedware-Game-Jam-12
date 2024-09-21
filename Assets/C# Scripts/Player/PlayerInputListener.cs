@@ -15,12 +15,12 @@ public class PlayerInputListener : MonoBehaviour
         inputActions.Player.PauseMenu.performed += OnPauseMenu;
         inputActions.Player.RunePage.performed += OnRunePage;
 
+        inputActions.Player.Attack.performed += OnAttack;
         inputActions.Player.CycleAbility.performed += OnCycleAbility;
 
         inputActions.Enable();
     }
 
-    [SerializeField]
     protected Vector2 movementVector = Vector2.zero;
 
     public virtual void Update()
@@ -28,9 +28,14 @@ public class PlayerInputListener : MonoBehaviour
         movementVector = inputActions.Player.Movement.ReadValue<Vector2>();
     }
 
+    public virtual void OnAttack(InputAction.CallbackContext context)
+    {
+
+    }
+
     public virtual void OnPauseMenu(InputAction.CallbackContext context)
     {
-        Debug.Log("Pause Menu");
+
     }
 
     public virtual void OnRunePage(InputAction.CallbackContext context)
