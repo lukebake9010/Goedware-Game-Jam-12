@@ -124,7 +124,6 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
         while(transform.parent.childCount > 1)
             DestroyImmediate(transform.parent.GetChild(1).gameObject);
 
-
         //Iterate over Groups
         for (int groupIterator = 0; groupIterator < regularNodes.Count; groupIterator++)
         {
@@ -135,8 +134,8 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
             //Iterate over Nodes
             for (int nodeIterator = 0; nodeIterator < regularNodes[groupIterator].Count; nodeIterator++)
             {
-                GameObject hex = Instantiate(node);
-                hex.transform.SetParent(group.transform, false);
+                GameObject hex = Instantiate(node, group.transform, false);
+                hex.name = "Group " + (groupIterator + 1).ToString() + " node " + (nodeIterator + 1).ToString(); 
                 hex.GetComponent<HexData>().coords = regularNodes[groupIterator][nodeIterator];
             }
         }
@@ -144,8 +143,8 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
         //Iterate over Capstones
         for (int capstoneIterator = 0; capstoneIterator < capstoneNodes.Count; capstoneIterator++)
         {
-            GameObject hex = Instantiate(capstoneNode);
-            hex.transform.SetParent(transform.parent, false);
+            GameObject hex = Instantiate(capstoneNode, transform.parent, false);
+            hex.name = "Capstone " + (capstoneIterator + 1).ToString();
             hex.GetComponent<HexData>().coords = capstoneNodes[capstoneIterator];
         }
     }
