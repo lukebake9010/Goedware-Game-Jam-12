@@ -16,6 +16,6 @@ public class SceneLoadButtonSubscriber : MonoBehaviour
         if (button == null) return;
 
         if (sceneIndex == null) return;
-        button.onClick.AddListener(() => { SceneLoader.GetInstance().StartLoadScene(sceneIndex); });
+        button.onClick.AddListener(() => { SceneLoader.Instance.StartLoadScene(sceneIndex); });
     }
 }

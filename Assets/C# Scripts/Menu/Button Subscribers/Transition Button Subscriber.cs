@@ -14,7 +14,7 @@ public class TransitionButtonSubscriber : MonoBehaviour
     {
         Button button = gameObject.GetComponent<Button>();
         if (button == null) return;
-        MenuManager menuManager = MenuManager.GetInstance();
+        MenuManager menuManager = MenuManager.Instance;
         if (menuManager == null) return;
 
         if (menuManager is not MenuManagerWithTransitions) return;
