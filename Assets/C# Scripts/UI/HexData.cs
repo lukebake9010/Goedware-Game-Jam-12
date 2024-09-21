@@ -4,6 +4,6 @@ using UnityEngine;
 public class HexData : MonoBehaviour
 {
     public Vector2 coords = new Vector2(0,0);
-    public int scale = 1;
+    public bool capstone = false;
 }
 #endif
