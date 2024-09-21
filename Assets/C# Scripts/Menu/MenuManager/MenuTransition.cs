@@ -12,18 +12,10 @@ public class MenuTransition : MonoBehaviour
 
     public bool startedTransition = false;
     public bool loadedTransition = false;
-    public bool Loaded
-    {
-        get { return loadedTransition; }
-        private set { loadedTransition = value; }
-    }
+    public bool Loaded{ get; private set;}
 
     public bool finishedTransition = false;
-    public bool Finished
-    {
-        get { return finishedTransition; }
-        private set { finishedTransition = value; }
-    }
+    public bool Finished { get; private set;}
 
 
     public void Transition()

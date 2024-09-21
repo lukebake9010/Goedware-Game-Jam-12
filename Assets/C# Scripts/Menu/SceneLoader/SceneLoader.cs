@@ -12,11 +12,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     //Display Progress is used for Loading Bars & Public displays of Loading Async Progress
     private float displayProgress = 0;
-    public float DisplayProgress
-    {
-        get { return displayProgress; }
-        private set { displayProgress = value; }
-    }
+    public float DisplayProgress { get; private set; }
 
 
     new void Awake()
