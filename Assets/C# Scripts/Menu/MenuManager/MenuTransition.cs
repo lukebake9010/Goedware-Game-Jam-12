@@ -12,6 +12,12 @@ public class MenuTransition : MonoBehaviour
 
     public bool startedTransition = false;
     public bool loadedTransition = false;
+    public bool Loaded
+    {
+        get { return loadedTransition; }
+        private set { loadedTransition = value; }
+    }
+
     public bool finishedTransition = false;
     public bool Finished
     {
@@ -45,6 +51,7 @@ public class MenuTransition : MonoBehaviour
     public virtual void LoadedTransition()
     {
         loadedTransition |= true;
+        transitionAnimation.SetBool("Loaded", true);
     }
 
     //Should be called by the exit animation of a transition

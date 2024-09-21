@@ -19,13 +19,13 @@ public class SceneLoaderChildTest : SceneLoader
     //How to override Active Loading Functionality
     public override void LoadingScene()
     {
-        Debug.Log("Mogging");
+        
     }
 
     //How to override start & end synchronous processes
     public override void OnFinishLoadLevel()
     {
-        Debug.Log("Child Debug Log");
+        
     }
 
 }

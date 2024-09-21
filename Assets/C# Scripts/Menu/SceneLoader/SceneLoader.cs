@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : Singleton<SceneLoader>
 {
     [SerializeField]
     private bool autoLoadScene = false; //Does Scene automatically load when async done
@@ -19,13 +19,20 @@ public class SceneLoader : MonoBehaviour
     }
 
 
-    //Function to Start Async Loading Coroutine
-    public void StartLoadScene(string sceneName)
+    new void Awake()
     {
-        StartCoroutine(Loadlevel(sceneName)); //Start Coroutine
+        base.Awake();
     }
 
-    IEnumerator Loadlevel(string sceneName)
+
+    //Function to Start Async Loading Coroutine
+
+    public void StartLoadScene(int sceneIndex)
+    {
+        StartCoroutine(LoadScene(sceneIndex)); //Start Coroutine
+    }
+
+    IEnumerator LoadScene(int sceneIndex)
     {
         //Create Empty AsyncOperation
         AsyncOperation loadAsync = null;
@@ -33,7 +40,7 @@ public class SceneLoader : MonoBehaviour
         //Attempt to create an Async Operation to Load Scene
         try
         {
-            loadAsync = SceneManager.LoadSceneAsync(sceneName);
+            loadAsync = SceneManager.LoadSceneAsync(sceneIndex);
             loadAsync.allowSceneActivation = autoLoadScene;
         }
 
@@ -58,9 +65,6 @@ public class SceneLoader : MonoBehaviour
         {
             //Update DisplayProgress
             displayProgress = loadAsync.progress;
-
-            //Output Progress in console
-            Debug.Log("Loading Scene: " + sceneName +  " , Progress: " + displayProgress);
 
             //Synchronous processes to run while Actively Loading Scene
             LoadingScene();
