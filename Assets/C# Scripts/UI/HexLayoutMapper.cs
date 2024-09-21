@@ -98,7 +98,7 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
     [SerializeField] private float SpriteVerticalHeight = 50f;
     [SerializeField] private float SpriteHorizontalWidth = 43.30127f;
     [SerializeField] private float CapstoneNodeScale = 3f;
-    [SerializeField] private int GridDims = 18;
+    [SerializeField] private int GridDims = 12;
 
     [SerializeField] private GameObject node;
     [SerializeField] private GameObject capstoneNode;
