@@ -2,8 +2,10 @@
   "dependencies": {
     "com.spoiledcat.git": "1.0.41-preview-g2692419106",
     "com.unity.2d.sprite": "1.0.0",
+    "com.unity.ai.navigation": "1.1.5",
     "com.unity.collab-proxy": "2.5.1",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.inputsystem": "1.7.0",
     "com.unity.render-pipelines.universal": "14.0.11",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.6",

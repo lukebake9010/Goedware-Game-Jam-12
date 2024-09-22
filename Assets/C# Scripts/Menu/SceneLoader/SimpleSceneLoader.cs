@@ -12,11 +12,7 @@ public class SimpleSceneLoader : MonoBehaviour
 
     //Display Progress is used for Loading Bars & Public displays of Loading Async Progress
     private float displayProgress = 0;
-    public float DisplayProgress
-    {
-        get { return displayProgress; }
-        private set { displayProgress = value; }
-    }
+    public float DisplayProgress { get; private set; }
 
 
     //Function to Start Async Loading Coroutine
