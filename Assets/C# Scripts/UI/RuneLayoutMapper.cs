@@ -8,83 +8,82 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
 [ExecuteInEditMode]
-public class HexLayoutMapper : Singleton<HexLayoutMapper>
+public class RuneLayoutMapper : Singleton<RuneLayoutMapper>
 {
 #if UNITY_EDITOR
 
     public const float ParallelHexRatio = 0.8660254f;
     public const float LongDiagHexRatio = 1.1547005f;
 
-    private static readonly ReadOnlyCollection<ReadOnlyCollection<Vector2>> regularNodes = new ReadOnlyCollection<ReadOnlyCollection<Vector2>>(
-        new ReadOnlyCollection<Vector2>[3] {
-            new ReadOnlyCollection<Vector2>(new Vector2[20]{
-                new Vector2( -1,7 ),
-                new Vector2( 0,7 ),
-                new Vector2( 1,7 ),
-                new Vector2( -3,6 ),
-                new Vector2( -2,6 ),
-                new Vector2( -1,6 ),
-                new Vector2( 0,6 ),
-                new Vector2( 1,6 ),
-                new Vector2( 2,6 ),
-                new Vector2( -3,5 ),
-                new Vector2( -2,5 ),
-                new Vector2( -1,5 ),
-                new Vector2( 0,5 ),
-                new Vector2( 1,5 ),
-                new Vector2( 2,5 ),
-                new Vector2( 3,5 ),
-                new Vector2( -3,4 ),
-                new Vector2( -2,4 ),
-                new Vector2( 1,4 ),
-                new Vector2( 2,4 )
-            }),
-            new ReadOnlyCollection<Vector2>(new Vector2[20]{
-                new Vector2( 4,1 ),
-                new Vector2( 5,1 ),
-                new Vector2( 3,0 ),
-                new Vector2( 4,0 ),
-                new Vector2( 5,0 ),
-                new Vector2( 4,-1 ),
-                new Vector2( 5,-1 ),
-                new Vector2( 3,-2 ),
-                new Vector2( 4,-2 ),
-                new Vector2( 5,-2 ),
-                new Vector2( 2,-3 ),
-                new Vector2( 3,-3 ),
-                new Vector2( 4,-3 ),
-                new Vector2( 5,-3 ),
-                new Vector2( 1,-4 ),
-                new Vector2( 2,-4 ),
-                new Vector2( 3,-4 ),
-                new Vector2( 4,-4 ),
-                new Vector2( 2,-5 ),
-                new Vector2( 3,-5 )
-            }),
-            new ReadOnlyCollection<Vector2>(new Vector2[20]{
-                new Vector2( -5,1 ),
-                new Vector2( -4,1 ),
-                new Vector2( -6,0 ),
-                new Vector2( -5,0 ),
-                new Vector2( -4,0 ),
-                new Vector2( -5,-1 ),
-                new Vector2( -4,-1 ),
-                new Vector2( -6,-2 ),
-                new Vector2( -5,-2 ),
-                new Vector2( -4,-2 ),
-                new Vector2( -5,-3 ),
-                new Vector2( -4,-3 ),
-                new Vector2( -3,-3 ),
-                new Vector2( -2,-3 ),
-                new Vector2( -5,-4 ),
-                new Vector2( -4,-4 ),
-                new Vector2( -3,-4 ),
-                new Vector2( -2,-4 ),
-                new Vector2( -3,-5 ),
-                new Vector2( -2,-5 )
-            })
-        }
-    );
+    private static readonly ReadOnlyCollection<ReadOnlyCollection<Vector2>> regularNodes = new ReadOnlyCollection<ReadOnlyCollection<Vector2>>( new ReadOnlyCollection<Vector2>[3] {
+        new ReadOnlyCollection<Vector2>(new Vector2[20]{
+            new Vector2( -1,7 ),
+            new Vector2( 0,7 ),
+            new Vector2( 1,7 ),
+            new Vector2( -3,6 ),
+            new Vector2( -2,6 ),
+            new Vector2( -1,6 ),
+            new Vector2( 0,6 ),
+            new Vector2( 1,6 ),
+            new Vector2( 2,6 ),
+            new Vector2( -3,5 ),
+            new Vector2( -2,5 ),
+            new Vector2( -1,5 ),
+            new Vector2( 0,5 ),
+            new Vector2( 1,5 ),
+            new Vector2( 2,5 ),
+            new Vector2( 3,5 ),
+            new Vector2( -3,4 ),
+            new Vector2( -2,4 ),
+            new Vector2( 1,4 ),
+            new Vector2( 2,4 )
+        }),
+        new ReadOnlyCollection<Vector2>(new Vector2[20]{
+            new Vector2( 4,1 ),
+            new Vector2( 5,1 ),
+            new Vector2( 3,0 ),
+            new Vector2( 4,0 ),
+            new Vector2( 5,0 ),
+            new Vector2( 4,-1 ),
+            new Vector2( 5,-1 ),
+            new Vector2( 3,-2 ),
+            new Vector2( 4,-2 ),
+            new Vector2( 5,-2 ),
+            new Vector2( 2,-3 ),
+            new Vector2( 3,-3 ),
+            new Vector2( 4,-3 ),
+            new Vector2( 5,-3 ),
+            new Vector2( 1,-4 ),
+            new Vector2( 2,-4 ),
+            new Vector2( 3,-4 ),
+            new Vector2( 4,-4 ),
+            new Vector2( 2,-5 ),
+            new Vector2( 3,-5 )
+        }),
+        new ReadOnlyCollection<Vector2>(new Vector2[20]{
+            new Vector2( -5,1 ),
+            new Vector2( -4,1 ),
+            new Vector2( -6,0 ),
+            new Vector2( -5,0 ),
+            new Vector2( -4,0 ),
+            new Vector2( -5,-1 ),
+            new Vector2( -4,-1 ),
+            new Vector2( -6,-2 ),
+            new Vector2( -5,-2 ),
+            new Vector2( -4,-2 ),
+            new Vector2( -5,-3 ),
+            new Vector2( -4,-3 ),
+            new Vector2( -3,-3 ),
+            new Vector2( -2,-3 ),
+            new Vector2( -5,-4 ),
+            new Vector2( -4,-4 ),
+            new Vector2( -3,-4 ),
+            new Vector2( -2,-4 ),
+            new Vector2( -3,-5 ),
+            new Vector2( -2,-5 )
+        })
+    });
+
     private static readonly ReadOnlyCollection<Vector2> capstoneNodes = new ReadOnlyCollection<Vector2>(
         new Vector2[3]{
             new Vector2( -4.5f,3.333333f ),
@@ -95,19 +94,15 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
 
     [SerializeField] bool RebuildHexes;
     [SerializeField] bool UpdateHexes;
-    [SerializeField] private float SpriteVerticalHeight = 50f;
-    [SerializeField] private float SpriteHorizontalWidth = 43.30127f;
+    [SerializeField] private float RegularNodeScale = 0.5f;
     [SerializeField] private float CapstoneNodeScale = 3f;
     [SerializeField] private int GridDims = 12;
 
     [SerializeField] private GameObject node;
     [SerializeField] private GameObject capstoneNode;
 
-    private float TrailingSpriteHeight = 50f;
-    private float TrailingSpriteWidth = 43.30127f;
     private float TrailingGridHeight = 1000f;
     private float TrailingGridWidth = 866.0254f;
-    private Vector2 TrailingGridDims = new Vector2(18, 18);
 
     private void OnValidate()
     {
@@ -127,7 +122,7 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
         //Iterate over Groups
         for (int groupIterator = 0; groupIterator < regularNodes.Count; groupIterator++)
         {
-            GameObject group = new GameObject("Hex Group " + (groupIterator + 1).ToString());
+            GameObject group = new GameObject("Notch Group " + (groupIterator + 1).ToString());
             group.transform.SetParent(transform.parent, false);
             group.tag = "Group";
 
@@ -135,7 +130,7 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
             for (int nodeIterator = 0; nodeIterator < regularNodes[groupIterator].Count; nodeIterator++)
             {
                 GameObject hex = Instantiate(node, group.transform, false);
-                hex.name = "Group " + (groupIterator + 1).ToString() + " node " + (nodeIterator + 1).ToString(); 
+                hex.name = "Group " + (groupIterator + 1).ToString() + " notch " + (nodeIterator + 1).ToString(); 
                 hex.GetComponent<HexData>().coords = regularNodes[groupIterator][nodeIterator];
             }
         }
@@ -144,40 +139,35 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
         for (int capstoneIterator = 0; capstoneIterator < capstoneNodes.Count; capstoneIterator++)
         {
             GameObject hex = Instantiate(capstoneNode, transform.parent, false);
-            hex.name = "Capstone " + (capstoneIterator + 1).ToString();
+            hex.name = "Capstone notch " + (capstoneIterator + 1).ToString();
             hex.GetComponent<HexData>().coords = capstoneNodes[capstoneIterator];
         }
     }
 
     public void UpdateGrid()
     {
-        //Apply hex Aspect ratio to sprites
-        if (SpriteVerticalHeight != TrailingSpriteHeight)
-            SpriteHorizontalWidth = ParallelHexRatio * SpriteVerticalHeight;
-        else if(SpriteHorizontalWidth != TrailingSpriteWidth)
-            SpriteVerticalHeight = LongDiagHexRatio * SpriteHorizontalWidth;
-
-        TrailingSpriteHeight = SpriteVerticalHeight;
-        TrailingSpriteWidth = SpriteHorizontalWidth;
-
         //Grab rect transform of container
         RectTransform screenspace = transform.parent.GetComponent<RectTransform>();
-        Rect rectSpace = screenspace.rect;
-        Rect anchorRect = new Rect(screenspace.anchorMin.x, screenspace.anchorMin.y, screenspace.anchorMax.x - screenspace.anchorMin.x, screenspace.anchorMax.y - screenspace.anchorMin.y);
+        LayoutElement container = screenspace.GetComponent<LayoutElement>();
 
         //Apply hex Aspect ratio to container
-        if (rectSpace.height != TrailingGridHeight)
-            screenspace.sizeDelta = new Vector2(ParallelHexRatio * rectSpace.height - anchorRect.width, screenspace.sizeDelta.y);
-        else if (rectSpace.width != TrailingGridWidth)
-            screenspace.sizeDelta = new Vector2(screenspace.sizeDelta.x, LongDiagHexRatio * rectSpace.width - anchorRect.height);
+        if (container.minHeight != TrailingGridHeight)
+        {
+            container.minWidth = ParallelHexRatio * container.minHeight;
+            container.minHeight = screenspace.sizeDelta.y;
+        }
+        else if (container.minWidth != TrailingGridWidth)
+        {
+            container.minWidth = screenspace.sizeDelta.x;
+            container.minHeight = LongDiagHexRatio * container.minWidth;
+        }
 
         //Update Cache
-        rectSpace = screenspace.rect;
-        TrailingGridHeight = rectSpace.height;
-        TrailingGridWidth = rectSpace.width;
+        TrailingGridHeight = container.minHeight;
+        TrailingGridWidth = container.minWidth;
 
         //Calc "grid" size
-        float slotWidth = rectSpace.width / GridDims;
+        float slotWidth = container.minWidth / GridDims;
         float slotHeight = slotWidth * LongDiagHexRatio;
 
         //Sort locations of children Hexes.
@@ -206,9 +196,11 @@ public class HexLayoutMapper : Singleton<HexLayoutMapper>
         RectTransform hexRect = hex.GetComponent<RectTransform>();
 
         //Set size
-        hexRect.sizeDelta = new Vector2(SpriteHorizontalWidth, SpriteVerticalHeight);
+        hexRect.sizeDelta = new Vector2(slotWidth, slotHeight);
         if (hexData.capstone)
             hexRect.sizeDelta *= CapstoneNodeScale;
+        else
+            hexRect.sizeDelta *= RegularNodeScale;
 
         //Translate 2d coords to hex grid
         float xpos = hexData.coords.x;
