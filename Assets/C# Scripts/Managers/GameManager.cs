@@ -14,13 +14,14 @@ public class GameManager : Singleton<GameManager>
     //Function to run before setting up Gameplay, such as creating a Load Screen / Setting Up Setup Scripts
     private void PreSetup()
     {
+        //Setup Loading Screen While Setup
 
     }
 
     //Function to run to start GamePlay Setup, such as level seeding, level creation, level loading, player loading etc.
     private void Setup()
     {
-
+        //Setup Game
     }
 
     private void GamePlay() //??? game go i guess
