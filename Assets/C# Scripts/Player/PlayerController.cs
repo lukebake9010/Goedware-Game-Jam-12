@@ -58,7 +58,9 @@ public class PlayerController : PlayerInputListener
 
     public override void OnAttack(InputAction.CallbackContext context)
     {
-
+        PlayerManager playerManager = PlayerManager.Instance;
+        if (playerManager == null) return;
+        playerManager.PlayerCombatAttack();
     }
 
     public override void OnPauseMenu(InputAction.CallbackContext context)
