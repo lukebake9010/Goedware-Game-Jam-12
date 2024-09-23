@@ -9,11 +9,42 @@ public class PlayerController : PlayerInputListener
     private float moveSpeed = 1.0f;
     [SerializeField] 
     private Rigidbody rb;
-
+    [SerializeField]
+    private Camera cam;
 
     new void Awake()
     {
         base.Awake();
+
+        PlayerCameraBeacon camBeacon = PlayerCameraBeacon.Instance;
+        if (camBeacon == null) return;
+        cam = camBeacon.GetCamera();
+    }
+
+    private void Update()
+    {
+        base.Update();
+
+        // Get the mouse position in screen space
+        Vector3 mouseScreenPosition = Input.mousePosition;
+
+        // Convert mouse screen position to world position
+        Ray ray = cam.ScreenPointToRay(mouseScreenPosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Assuming the ground is on the XZ plane
+        if (groundPlane.Raycast(ray, out float rayDistance))
+        {
+            Vector3 mouseWorldPosition = ray.GetPoint(rayDistance);
+
+            // Calculate direction to the mouse
+            Vector3 direction = mouseWorldPosition - transform.position;
+            direction.y = 0; // Ignore Y for top-down rotation
+
+            // Calculate the rotation angle (Y-axis rotation)
+            float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+
+            // Apply the rotation to the mage
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+        }
     }
 
     private void FixedUpdate()

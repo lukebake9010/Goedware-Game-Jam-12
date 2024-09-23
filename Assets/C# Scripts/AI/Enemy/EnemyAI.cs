@@ -9,9 +9,10 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private NavMeshAgent agent;
 
-    private void Awake()
+    protected void Awake()
     {
         if(agent == null) agent = GetComponent<NavMeshAgent>();
+        LookAtPlayer();
     }
 
 
@@ -19,6 +20,17 @@ public class EnemyAI : MonoBehaviour
     {
         if (agent == null) return;
         agent.destination = destination;
+    }
+
+    public void LookAtPlayer()
+    {
+        if (agent == null) return;
+        PlayerManager playerManager = PlayerManager.Instance;
+        if(PlayerManager.Instance == null) return;
+        Vector3 playerPosition = playerManager.gameObject.transform.position;
+        Vector3 lookVector = playerPosition - gameObject.transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(lookVector,Vector3.up);
+        gameObject.transform.rotation = lookRotation;
     }
 
 }
