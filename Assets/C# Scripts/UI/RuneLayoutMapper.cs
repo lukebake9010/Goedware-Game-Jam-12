@@ -94,6 +94,7 @@ public class RuneLayoutMapper : Singleton<RuneLayoutMapper>
 
     [SerializeField] bool RebuildHexes;
     [SerializeField] bool UpdateHexes;
+    [SerializeField] int NonNotchGameobjects = 1;
     [SerializeField] private float RegularNodeScale = 0.5f;
     [SerializeField] private float CapstoneNodeScale = 3f;
     [SerializeField] private int GridDims = 12;
@@ -116,8 +117,8 @@ public class RuneLayoutMapper : Singleton<RuneLayoutMapper>
     private void RebuildGrid()
     {
         //delete all existing objects and groups
-        while(transform.parent.childCount > 1)
-            DestroyImmediate(transform.parent.GetChild(1).gameObject);
+        while(transform.parent.childCount > NonNotchGameobjects)
+            DestroyImmediate(transform.parent.GetChild(NonNotchGameobjects).gameObject);
 
         //Iterate over Groups
         for (int groupIterator = 0; groupIterator < regularNodes.Count; groupIterator++)
@@ -171,7 +172,7 @@ public class RuneLayoutMapper : Singleton<RuneLayoutMapper>
         float slotHeight = slotWidth * LongDiagHexRatio;
 
         //Sort locations of children Hexes.
-        for (int childIterator = 1; childIterator < transform.parent.childCount; childIterator++)
+        for (int childIterator = NonNotchGameobjects; childIterator < transform.parent.childCount; childIterator++)
         {
             //Grab the child
             Transform child = transform.parent.GetChild(childIterator);
