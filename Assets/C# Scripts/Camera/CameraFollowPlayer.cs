@@ -18,8 +18,6 @@ public class CameraFollowPlayer : MonoBehaviour
             if (!findingAnchor) StartCoroutine(FindCamAnchor());
             return;
         }
-        camAnchor = PlayerCameraAnchor.Instance.gameObject;
-        camOffset = gameObject.transform.position - camAnchor.transform.position;
     }
 
     // Update is called once per frame

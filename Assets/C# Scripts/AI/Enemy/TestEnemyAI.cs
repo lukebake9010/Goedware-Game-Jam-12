@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class TestEnemyAI : EnemyAI
 {
+
+    new void Awake() 
+    {
+        base.Awake();
+    }
+
     private void Start()
     {
         StartCoroutine(GoToPlayer());
