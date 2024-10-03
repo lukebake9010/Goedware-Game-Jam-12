@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : Singleton<SceneLoader>
 {
-    [SerializeField]
-    private bool autoLoadScene = false; //Does Scene automatically load when async done
 
+//Since try-catch is used, throws warning over non use of value. Suppress warning.
+#pragma warning disable CS0414
+    [SerializeField] private bool autoLoadScene = false; //Does Scene automatically load when async done
+#pragma warning restore CS0414
 
     //Display Progress is used for Loading Bars & Public displays of Loading Async Progress
     private float displayProgress = 0;

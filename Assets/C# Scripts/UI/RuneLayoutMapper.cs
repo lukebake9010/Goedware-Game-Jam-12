@@ -1,7 +1,11 @@
 using System.Collections.ObjectModel;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+
+//using HexData = EDITORONLYHexData;
+
 
 [RequireComponent(typeof(RectTransform))]
 [ExecuteInEditMode]
@@ -89,8 +93,11 @@ public class RuneLayoutMapper : Singleton<RuneLayoutMapper>
         }
     );
 
+#pragma warning disable CS0414
     [SerializeField] bool RebuildHexes;
     [SerializeField] bool UpdateHexes;
+#pragma warning restore CS0414
+
     [SerializeField] int NonNotchGameobjects = 1;
     [SerializeField] private float RegularNodeScale = 0.5f;
     [SerializeField] private float CapstoneNodeScale = 3f;
@@ -104,10 +111,13 @@ public class RuneLayoutMapper : Singleton<RuneLayoutMapper>
 
     private void OnValidate()
     {
+        if (EditorApplication.isPlayingOrWillChangePlaymode)
+            return;
+
         if (RebuildHexes)
-            UnityEditor.EditorApplication.delayCall += () => RebuildGrid();
+            EditorApplication.delayCall += () => RebuildGrid();
         RebuildHexes = false;
-        UnityEditor.EditorApplication.delayCall += () => UpdateGrid();
+        EditorApplication.delayCall += () => UpdateGrid();
         UpdateHexes = false;
     }
 

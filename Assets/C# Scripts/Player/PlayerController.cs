@@ -21,7 +21,7 @@ public class PlayerController : PlayerInputListener
         cam = camBeacon.GetCamera();
     }
 
-    private void Update()
+    public override void Update()
     {
         base.Update();
 

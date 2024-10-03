@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    // Enums are non-nullable. Default value is the default value of the constant equivalent.
+    // By default, this value is int.
+    // Can be manually specified by (or similar):
+    // private enum Spell : ushort
     private enum Spell 
     {
+        InvalidSpell,
         Earth,
         Wind,
         Fire,
@@ -37,7 +42,7 @@ public class PlayerCombatController : MonoBehaviour
         if(playerManager == null) return;
         Vector3 spellStart = playerManager.GetSpellStartPosition();
         Quaternion spellRotation = playerManager.GetRotation();
-        if (currentSpell.spell == null || currentSpell.prefab == null) return;
+        if (currentSpell.spell == Spell.InvalidSpell || currentSpell.prefab == null) return;
         SpawnSpell(currentSpell, spellStart, spellRotation);        
     }
 
