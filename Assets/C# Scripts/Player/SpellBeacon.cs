@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellBeacon : Singleton<SpellBeacon>
+public class SpellBeacon : SingletonBehaviour<SpellBeacon>
 {
     public Vector3 GetPosition()
     {

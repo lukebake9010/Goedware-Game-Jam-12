@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : Singleton<SceneLoader>
+public class SceneLoader : SingletonBehaviour<SceneLoader>
 {
 
 //Since try-catch is used, throws warning over non use of value. Suppress warning.

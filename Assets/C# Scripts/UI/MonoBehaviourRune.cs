@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rune : MonoBehaviour
+public class MonoBehaviourRune : MonoBehaviour
 {
     [SerializeField]
     Color runeColor;

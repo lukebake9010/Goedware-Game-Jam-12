@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuManager : Singleton<MenuManager>
+public class MenuManager : SingletonBehaviour<MenuManager>
 {
     [SerializeField]
     MenuPage currentPage;

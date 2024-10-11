@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
 [ExecuteInEditMode]
-public class ShardScrollRectValidator : Singleton<ShardScrollRectValidator>
+public class ShardScrollRectValidator : SingletonBehaviour<ShardScrollRectValidator>
 {
     public static void ValidateScrollRect()
     {

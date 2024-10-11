@@ -11,13 +11,13 @@ public class RuneAnchor : MonoBehaviour
 
     private bool IsRune(GameObject rune)
     {
-        Rune isRune = rune.GetComponent<Rune>();
+        MonoBehaviourRune isRune = rune.GetComponent<MonoBehaviourRune>();
         return (isRune != null);
     }
 
     private bool IsRune()
     {
-        Rune isRune = runeObject.GetComponent<Rune>();
+        MonoBehaviourRune isRune = runeObject.GetComponent<MonoBehaviourRune>();
         return (isRune != null);
     }
 
@@ -26,9 +26,9 @@ public class RuneAnchor : MonoBehaviour
         return runeObject;
     }
 
-    private Rune GetRune()
+    private MonoBehaviourRune GetRune()
     {
-        Rune rune = runeObject.GetComponent<Rune>();
+        MonoBehaviourRune rune = runeObject.GetComponent<MonoBehaviourRune>();
         return rune;
     }
 }

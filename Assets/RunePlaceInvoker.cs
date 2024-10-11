@@ -5,7 +5,7 @@ using UnityEngine;
 public class RunePlaceInvoker : MonoBehaviour
 {
     [SerializeField]
-    Rune rune;
+    MonoBehaviourRune rune;
 
     public void InvokeRunePlace()
     {

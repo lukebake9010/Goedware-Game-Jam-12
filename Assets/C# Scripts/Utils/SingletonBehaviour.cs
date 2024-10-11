@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T:Singleton<T>, new()
+public class SingletonBehaviour<T> : MonoBehaviour where T:SingletonBehaviour<T>, new()
 {
 
     // Refers to the instance.
@@ -39,5 +39,19 @@ public class Singleton<T> : MonoBehaviour where T:Singleton<T>, new()
         }
 
         Instance = (T)this;
+    }
+}
+
+public class Singleton<T> where T : SingletonBehaviour<T>, new()
+{
+    // Refers to the instance.
+    public static T Instance { get; private set; }
+
+    // Will be created in runtime if not existing already, for creation programmatically
+    public static T GetInstance()
+    {
+        if (Instance == null)
+            Instance = new T();
+        return Instance;
     }
 }

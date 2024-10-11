@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
 [ExecuteInEditMode]
-public class RuneLayoutMapper : Singleton<RuneLayoutMapper>
+public class RuneLayoutMapper : SingletonBehaviour<RuneLayoutMapper>
 {
 #if UNITY_EDITOR
 
